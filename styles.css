@@ -1,18 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
-html,
 body {
-  margin: 0;
-  padding: 0;
+  font-family: "Poppins", "sans-serif";
+  min-height: 100vh;
+  background-color: aquamarine;
+}
+
+header {
+  background-color: darkblue;
+  padding: 1.5em 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 75vw;
+  margin: 0 auto;
+}
+
+header h1 {
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: aliceblue;
+}
+
+main {
+  padding: 5em 0;
 }
 
 .library {
-  background-color: green;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 1em;
+  column-gap: 1.5em;
+  row-gap: 1em;
 }
 
 .book {
@@ -30,4 +54,16 @@ body {
 
 .book p {
   margin-bottom: 0.5em;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
 }
