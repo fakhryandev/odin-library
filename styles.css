@@ -39,6 +39,12 @@ main {
   row-gap: 1em;
 }
 
+@media screen and (max-width: 1024px) {
+  .library {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .container {
     max-width: 90vw;
@@ -53,7 +59,7 @@ main {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .library {
     grid-template-columns: 1fr;
   }
@@ -84,6 +90,7 @@ main {
   display: flex;
   justify-content: flex-end;
   gap: 1em;
+  margin-top: 1.5em;
 }
 
 .btn {
