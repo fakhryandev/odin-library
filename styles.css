@@ -39,6 +39,30 @@ main {
   row-gap: 1em;
 }
 
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 90vw;
+  }
+
+  .library {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .button-wrapper {
+    justify-content: center !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .library {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    max-width: 85vw;
+  }
+}
+
 .book {
   border: 1px solid black;
   border-radius: 0.8em;
