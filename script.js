@@ -1,4 +1,25 @@
 const myLibrary = [];
+const bookForm = document.getElementById("newBookForm");
+const formModal = document.getElementById("modalNewBook");
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadLibary();
+});
+
+bookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const author = document.getElementById("authorInput").value;
+  const title = document.getElementById("titleInput").value;
+  const numberOfPages = document.getElementById("pagesInput").value;
+  const status = document.getElementById("statusCheck").checked;
+
+  const newBook = new Book(title, author, numberOfPages, status);
+
+  bookForm.reset();
+  addBookToLibary(newBook);
+
+  loadLibary();
+});
 
 function Book(title, author, numberOfPages, status) {
   this.title = title;
@@ -39,13 +60,11 @@ function bookCreator(bookData) {
   return html;
 }
 
-const newBookOne = new Book(
-  "The Richest Man in Babylon",
-  "George Samuel Clason",
-  144,
-  false
-);
+// const newBookOne = new Book(
+//   "The Richest Man in Babylon",
+//   "George Samuel Clason",
+//   144,
+//   false
+// );
 
-addBookToLibary(newBookOne);
-
-loadLibary();
+// addBookToLibary(newBookOne);

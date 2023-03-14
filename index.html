@@ -18,6 +18,14 @@
     <nav class="navbar navbar-light bg-light shadow">
       <div class="container">
         <span class="navbar-brand mb-0 h1">Virtual Library</span>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#modalNewBook"
+        >
+          New Book
+        </button>
       </div>
     </nav>
     <div class="container">
@@ -26,6 +34,60 @@
         id="library"
       ></div>
     </div>
+
+    <div
+      class="modal fade"
+      id="modalNewBook"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="modalNewBookLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalNewBookLabel">New Book</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="newBookForm">
+              <div class="form-group">
+                <label for="authorInput">Author</label>
+                <input type="text" class="form-control" id="authorInput" />
+              </div>
+              <div class="form-group">
+                <label for="titleInput">Title</label>
+                <input type="text" class="form-control" id="titleInput" />
+              </div>
+              <div class="form-group">
+                <label for="pagesInput">Total Pages</label>
+                <input type="number" class="form-control" id="pagesInput" />
+              </div>
+              <div class="form-group form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="statusCheck"
+                />
+                <label class="form-check-label" for="statusCheck">
+                  I have already read this book.</label
+                >
+              </div>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
