@@ -23,14 +23,15 @@ function loadLibary() {
 
 function bookCreator(bookData) {
   const html = `
-    <div class="book">
-      <h1 class="book-title" class="book-title">Title : ${bookData.title}</h1>
-      <p>Author : ${bookData.author}</p>
-      <p>Number of Pages : ${bookData.numberOfPages}</p>
-      <p>Status : ${bookData.status}</p>
-      <div class="button-wrapper">
-        <button class="btn">Finished</button>
-        <button class="btn">Delete</button>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">${bookData.title}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${bookData.author}</h6>
+          <p class="card-text">Number of Pages : <span class="font-weight-bold">${bookData.numberOfPages} pages</span></p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
       </div>
     </div>
   `;
