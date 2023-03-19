@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 bookForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const author = document.getElementById("authorInput").value;
   const title = document.getElementById("titleInput").value;
   const numberOfPages = document.getElementById("pagesInput").value;
@@ -18,6 +19,7 @@ bookForm.addEventListener("submit", (e) => {
   bookForm.reset();
   addBookToLibary(newBook);
 
+  $("#modalNewBook").modal("hide");
   loadLibary();
 });
 
@@ -35,14 +37,23 @@ function addBookToLibary(book) {
 function loadLibary() {
   const library = document.getElementById("library");
 
-  myLibrary.forEach((item) => {
-    const book = bookCreator(item);
+  library.innerHTML = "";
+
+  myLibrary.forEach((item, index) => {
+    const book = bookCreator(item, index);
 
     library.insertAdjacentHTML("beforeend", book);
+
+    const removeButton = document.getElementById(`remove-${index}`);
+
+    removeButton.addEventListener("click", (e) => {
+      myLibrary.splice(index, 1);
+      loadLibary();
+    });
   });
 }
 
-function bookCreator(bookData) {
+function bookCreator(bookData, index) {
   const html = `
     <div class="col mb-4">
       <div class="card h-100">
@@ -50,8 +61,8 @@ function bookCreator(bookData) {
           <h5 class="card-title">${bookData.title}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${bookData.author}</h6>
           <p class="card-text">Number of Pages : <span class="font-weight-bold">${bookData.numberOfPages} pages</span></p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <button class="btn btn-danger" id="remove-${index}">Remove</button>
+          <button class="btn btn-success">Finish</button>
         </div>
       </div>
     </div>
@@ -59,12 +70,3 @@ function bookCreator(bookData) {
 
   return html;
 }
-
-// const newBookOne = new Book(
-//   "The Richest Man in Babylon",
-//   "George Samuel Clason",
-//   144,
-//   false
-// );
-
-// addBookToLibary(newBookOne);
