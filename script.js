@@ -50,6 +50,13 @@ function loadLibary() {
       myLibrary.splice(index, 1);
       loadLibary();
     });
+
+    const updateButton = document.getElementById(`update-${index}`);
+    updateButton.addEventListener("click", (e) => {
+      const updatedStatus = !myLibrary[index].status;
+      myLibrary[index].status = updatedStatus;
+      loadLibary();
+    });
   });
 }
 
@@ -58,11 +65,22 @@ function bookCreator(bookData, index) {
     <div class="col mb-4">
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title">${bookData.title}</h5>
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title">${bookData.title}</h5>
+            <i class="icon-check-sign text-success ${
+              bookData.status === !true ? "d-none" : "d-block"
+            }"></i>
+          </div>
           <h6 class="card-subtitle mb-2 text-muted">${bookData.author}</h6>
-          <p class="card-text">Number of Pages : <span class="font-weight-bold">${bookData.numberOfPages} pages</span></p>
+          <p class="card-text">Number of Pages : <span class="font-weight-bold">${
+            bookData.numberOfPages
+          } pages</span></p>
           <button class="btn btn-danger" id="remove-${index}">Remove</button>
-          <button class="btn btn-success">Finish</button>
+          <button class="btn ${
+            bookData.status === !true ? "btn-success" : "btn-secondary"
+          }" id="update-${index}">${
+    bookData.status === !true ? "Finish" : "Unfinish"
+  }</button>
         </div>
       </div>
     </div>
